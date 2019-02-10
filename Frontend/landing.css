@@ -1,0 +1,100 @@
+body{
+	background: url(homepage2.jfif);
+	background-size: cover;
+	background-position: center;
+	color: white;
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+
+}
+html{
+     height: 100%
+}
+.main-nav {
+	display: flex;
+	list-style: none;
+	background-color: #e7e7e7;
+	font-size: 1.1em;
+	margin: 0;
+	padding-left: 25px;
+	padding-right: 25px;
+	font-family: arial;
+	font-weight: 500;
+}
+li {
+	padding: 15px;
+	align-self: center;
+}
+li a {
+	color: black;
+	text-decoration: none;
+}
+.push{
+	display: flex;
+	margin-left: auto;
+}
+#brand {
+	font-size: 1.3em;
+	font-family: arial;
+}
+
+#content{
+	text-align: center;
+	padding-top: 18%;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+	             0px 8px 13px rgba(0,0,0,0.1),
+	             0px 18px 23px rgba(0,0,0,0.1);
+}
+h1{
+	display: block;
+	font-weight: 700;
+	font-size: 6.5em;
+	font-family: inherit;
+	line-height: 1.1;
+	color: black;
+	margin-bottom: 12px;
+}
+hr{
+	width: 400px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+
+}
+h3{
+	display: block;
+	font-size: 24px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: cursive;
+	font-weight: 500;
+	color: black;
+	opacity: 0.9;
+	line-height: 1.1;
+
+}
+
+button {
+	border: none;
+	color: #333;
+	padding: 12px 18px;
+	background-color: #fff;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1.33333;
+	margin-right: 4px;
+	border-radius: 6px;
+	font-weight: lighter;
+
+}
+button:hover {
+	background-color: #ccc;
+	color: #333;
+	border: 1px solid transparent;
+}
+
+
+@media only screen and (max-width: 680px){
+	.main-nav {
+		font-size: 9px;
+	}
+}
