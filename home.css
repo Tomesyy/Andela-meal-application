@@ -10,17 +10,17 @@ body{
 	background-color: #e7e7e7;
 	font-family: Helvetica, sans-serif;
 	font-weight: lighter;
-	color: blue;
+	color: black;
 }
 h2 {
-	color: blue;
+	color: black;
 	text-align: center;
 	font-family: arial;
 	font-size: 2.7em;
 	font-weight: lighter;
 }
 li{
-	padding: 15px;
+	padding: 13px;
 }
 .push{
 	margin-left: auto;
@@ -83,11 +83,13 @@ button:hover {
 }
 
 h1 {
-	color: blue;
-	font-family: 'Poiret one', cursive;
-	font-size: 109px;
+	color: inherit;
+	font-family: arial;
+	line-height: 1.1;
+	font-weight: 700;
+	font-size: 6.5em;
 	margin: 0;
-	background: url(homepage.jpg) no-repeat center center fixed;
+	background: url(homepage2.jfif) no-repeat center center fixed;
 	display: flex;
 	align-items: center;
 	justify-content: center;
