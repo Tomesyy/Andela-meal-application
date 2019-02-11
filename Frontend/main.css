@@ -13,12 +13,16 @@ body{
 	font-family: arial;
 	font-weight: 500;
 }
+p {
+	font-weight: lighter;
+	font-family: cursive;
+}
 h1 {
 	font-size: 77px;
 	font-family: Helvetica, sans-serif;
 	font-weight: lighter;
 	display: inline;
-	color:  #2980b9;
+	color:  black;
 }
 li {
 	padding: 15px;
@@ -44,13 +48,13 @@ li a {
 	font-family: arial;
 }
 .container {
-	border: 1px solid black;
+	border: 1px solid #e7e7e7;
 	width: 60vh;
 	text-align: center;
 	margin: auto auto auto auto;
 	margin-top: 5%;
 	padding: 40px;
-	border-radius: 25px;
+	border-radius: 20px;
 }
 .container input {
 	text-align: center;
@@ -83,5 +87,11 @@ li a {
 	.main-nav {
 		font-size: 0.7em;
 		padding: 0;
+	}
+	.container {
+		width: 40vh;
+	}
+	h1 {
+		font-size: 60px;
 	}
 }

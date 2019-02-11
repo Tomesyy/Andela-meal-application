@@ -10,7 +10,10 @@ body{
 	background-color: #e7e7e7;
 	font-family: Helvetica, sans-serif;
 	font-weight: lighter;
+}
+li a {
 	color: black;
+	text-decoration: none;
 }
 h2 {
 	color: black;
@@ -21,6 +24,7 @@ h2 {
 }
 li{
 	padding: 13px;
+	align-self: center;
 }
 .push{
 	margin-left: auto;
@@ -80,6 +84,10 @@ button:hover {
 	background-color: blue;
 	color: white;
 	border: 1px solid white;
+}
+#brand {
+	font-size: 1.3em;
+	font-family: arial;
 }
 
 h1 {
