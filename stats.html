@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Book-a-Meal</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="stats.css">
+</head>
+<body>
+	<nav>
+       <ul class="main-nav">
+         <li><a href="" id="brand"><span>B</span>ook-<span>a</span>-<span>M</span>eal</a></li>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="user-menu.html">Menu</a></li>
+         <li><a href="order.html">Order</a></li>
+         <li><a href="dashboard.html">Dashboard</a></li>
+         <div class="push">
+             <li><a href="register.html">Sign Up</a></li>
+             <li><a href="login.html">Login</a></li>
+             <li><a href="">Logout</a></li>
+         </div>
+       </ul>
+    </nav>
+    <div class="container">
+    	<div class="ordered">
+    		<h1>Ordered Meals</h1>
+    		<table style="width: 100%">
+    			<thead>
+    				<tr>
+    					<th>Item</th>
+    					<th>Details</th>
+    					<th>Price</th>
+    					<th>Status</th>
+    					<th>Actions</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+                    <tr>
+                        <td>Bigman Suya</td>
+                        <td>Roasted meat with hot pepper</td>
+                        <td>N1000</td>
+                        <td>Not in Menu</td>
+                        <td><button class="settle">Settle</button></td>
+                    </tr>
+                    <tr>
+                        <td>Bigman Suya</td>
+                        <td>Roasted meat with hot pepper</td>
+                        <td>N1000</td>
+                        <td>Added to Menu</td>
+                        <td><button class="settle">Settle</button></td>
+                    </tr>
+
+                </tbody>
+    		</table>
+    	</div>
+    	<div class="summary" style="width: 90%">
+    		<h2>Today's Summary</h2>
+            <div class="summary-content">
+                <p>Total meals ordered: 2</p>
+                <p>Total meals delivered: 2</p>
+                <p>Total revenue generated: 1000 NGN</p>
+            </div>
+       	</div>
+    </div>
+
+    <footer>
+        &copy 2019 Copyright. <span id="foot">Book-a-Meal</span> ALCwithforloop
+    </footer>
+</body>
+</html>

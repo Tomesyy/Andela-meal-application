@@ -1,97 +1,70 @@
 body{
-	margin: auto 0;
-	background-color: ;
+	margin: 0;
+	margin-bottom: 50px
 }
 .main-nav {
 	display: flex;
 	list-style: none;
 	background-color:  #e7e7e7;
-	font-size: 1.1em;
+	font-size: 1em;
 	margin: 0;
 	padding-left: 25px;
 	padding-right: 25px;
 	font-family: arial;
 	font-weight: 500;
 }
-p {
-	font-weight: lighter;
-	font-family: cursive;
-}
-h1 {
-	font-size: 77px;
-	font-family: Helvetica, sans-serif;
-	font-weight: lighter;
-	display: inline;
-	color:  black;
-}
 li {
-	padding: 15px;
+	padding: 11px;
 	align-self: center;
+}
+footer {
+  position: fixed;
+  margin-bottom: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-family: "Nunito", sans-serif;
+  line-height: 1.1;
+}
+#foot {
+  color: #2a1873;
 }
 li a {
 	color: black;
 	text-decoration: none;
 }
-#lastname {
-	margin-left: 7px;
-}
-.container .half {
-	display: flex;
-	width: cover;
-}
 .push{
-	display: flex;
 	margin-left: auto;
+	display: flex;
 }
 #brand {
 	font-size: 1.3em;
 	font-family: arial;
 }
-.container {
-	border: 1px solid #e7e7e7;
-	width: 60vh;
-	text-align: center;
-	margin: auto auto auto auto;
-	margin-top: 5%;
-	padding: 40px;
-	border-radius: 20px;
-}
-.container input {
-	text-align: center;
-	width: 100%;
-	margin-top: 9px;
-	height: 6vh;
-	border-radius: 8px;
-	border: 2px solid #e7e7ff;
-	font-size: 1em;
-}
-#submit {
-	font-weight: lighter;
-	font-size: 1.3rem;
-	color: white;
-	background-color: #2980b9;
-	height: 8vh;
-}
-
-#submit:hover {
-	opacity: 0.8;
-}
-.container input:focus {
-	border: 2px solid #2980b9;
+span{
+	color: #2a1873;
+	font-size: 1.1em;
+	font-family: cursive;
+	align-self: center;
 }
 
 
 
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 700px){
 	.main-nav {
 		font-size: 0.7em;
 		padding: 0;
 	}
-	.container {
-		width: 40vh;
+}	
+
+@media only screen and (max-width: 500px){
+	.main-nav {
+		font-size: 0.4em;
+		padding: 0;
 	}
-	h1 {
-		font-size: 60px;
-	}
-}
+}	
