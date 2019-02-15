@@ -2,22 +2,25 @@
 <html>
 <head>
 	<title>Book-a-Meal</title>
+	<link rel="stylesheet" type="text/css" href="auth.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
 	<nav>
-      <ul class="main-nav">
-        <li><a href="landing.html" id="brand">Book-a-Meal</a></li>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="">Menu</a></li>
-        <div class="push">
-            <li><a href="register.html">Sign Up</a></li>
-            <li><a href="">Register as a Vendor</a></li>
-            <li><a href="login.html">Login</a></li>
-        </div>
-      </ul>
-   </nav>
+       <ul class="main-nav">
+         <li><a href="" id="brand"><span>B</span>ook-<span>a</span>-<span>M</span>eal</a></li>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="user-menu.html">Menu</a></li>
+         <li><a href="order.html">Order</a></li>
+         <li><a href="dashboard.html">Dashboard</a></li>
+         <div class="push">
+             <li><a href="register.html">Sign Up</a></li>
+             <li><a href="login.html">Login</a></li>
+             <li><a href="">Logout</a></li>
+         </div>
+       </ul>
+    </nav>
 
 	<div class="container">
 		<h1>Sign Up</h1>
@@ -27,12 +30,22 @@
 		    <input type="text" name="lastname" placeholder="Last Name*" id="lastname">
 		</section>
 		<input type="number" name="phonenumber" placeholder="Phone Number*"> <br>
+		<select>
+			<option value="" disabled selected>Sign Up As</option>
+			<option value="user">User</option>
+			<option value="Vendor">Vendor</option>
+		</select>
 		<input type="text" name="username" placeholder="Username*"> <br>
 		<input type="password" name="password" placeholder="Password*"> <br>
+		<input type="password" name="password" placeholder="Confirm Password*"> <br>
 		<input href="/" type="submit" name="" id="submit" value="Get Started"> <br>
-		<a href="/">Terms and conditions</a>
-	    <a href="/">Help</a>
+		<a href="/" class="help">Terms and conditions</a>
+	    <a href="/" class="help">Help</a>
 	</div>
+
+	<footer>
+		&copy 2019 Copyright. <span id="foot">Book-a-Meal</span> ALCwithforloop
+	</footer>
 
 </body>
 </html>

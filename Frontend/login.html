@@ -2,22 +2,25 @@
 <html>
 <head>
 	<title>Book-a-Meal</title>
+	<link rel="stylesheet" type="text/css" href="auth.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
 	<nav>
-      <ul class="main-nav">
-        <li><a href="landing.html" id="brand">Book-a-Meal</a></li>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="">Menu</a></li>
-        <div class="push">
-          <li><a href="register.html">Sign Up</a></li>
-          <li><a href="">Register as a Vendor</a></li>
-          <li><a href="login.html">Login</a></li>
-        </div>
-      </ul>
-   </nav>
+       <ul class="main-nav">
+         <li><a href="" id="brand"><span>B</span>ook-<span>a</span>-<span>M</span>eal</a></li>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="user-menu.html">Menu</a></li>
+         <li><a href="order.html">Order</a></li>
+         <li><a href="dashboard.html">Dashboard</a></li>
+         <div class="push">
+             <li><a href="register.html">Sign Up</a></li>
+             <li><a href="login.html">Login</a></li>
+             <li><a href="">Logout</a></li>
+         </div>
+       </ul>
+    </nav>
 
 	<div class="container">
 		<h1>Login</h1>
@@ -25,9 +28,13 @@
 		<input type="text" name="username" placeholder="username*"> <br>
 		<input type="password" name="password" placeholder="password*"> <br>
 		<input href="/" type="submit" name="" id="submit" value="Login"> <br>
-		<a href="/">Help</a>
-		<a href="/">Forgot password?</a>
+		<a href="/" class="help">Help</a>
+		<a href="/" class="help">Forgot password?</a>
 	</div>
+
+	<footer>
+		&copy 2019 Copyright. <span id="foot">Book-a-Meal</span> ALCwithforloop
+	</footer>
 
 </body>
 </html>

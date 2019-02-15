@@ -1,0 +1,131 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+h2 {
+  color: black;
+  text-align: center;
+  font-family: cursive;
+  font-size: 2.7em;
+  font-weight: lighter;
+}
+.container {
+	margin: 5%;
+	margin-top: 2%;
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto auto auto auto;
+  text-align: center;
+
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+td {
+  padding: 10px;
+  font-size: 20px;
+}
+th {
+  font-weight: bolder;
+  font-size: 20px;
+}
+tr:nth-child(even){
+  background-color: #FFF0AA;
+}
+.add {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 11px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  float: right;
+  margin-top: inherit;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.add:hover {
+	background-color: white; /* Green */
+
+    color: #4CAF50;
+
+    border: 2px solid #4CAF50;
+}
+.stats {
+  background-color: #E96694; /* Green */
+  border: none;
+  color: white;
+  padding: 11px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  float: right;
+  margin-top: inherit;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.stats:hover {
+  background-color: white; /* Green */
+
+    color: #E96694;
+
+    border: 2px solid #E96694;
+}
+
+.delete {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 3%;
+  margin-top: inherit;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.delete:hover {
+	background-color: white; /* Green */
+
+    color: red;
+
+    border: 2px solid red;
+}
+.edit {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 3%;
+  margin-top: inherit;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.edit:hover {
+	background-color: white; /* Green */
+
+    color: #4CAF50;
+
+    border: 2px solid #4CAF50;
+}
+

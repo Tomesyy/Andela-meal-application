@@ -1,0 +1,60 @@
+h1 {
+	font-size: 60px;
+	font-family: Helvetica, sans-serif;
+	font-weight: lighter;
+	display: inline;
+	color:  black;
+}
+.container {
+	border: 1px solid #e7e7e7;
+	width: 60vh;
+	text-align: center;
+	margin: auto auto auto auto;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 20px;
+}
+.container input {
+	text-align: center;
+	width: 100%;
+	margin-top: 9px;
+	height: 34px;
+	border-radius: 8px;
+	border: 2px solid #e7e7ff;
+	font-size: 1em;
+}
+#submit {
+	font-weight: lighter;
+	font-size: 1.3rem;
+	color: white;
+	background-color: #2980b9;
+	height: 8vh;
+}
+.help {
+	float: left;
+	margin: 5px;
+	margin-top: 2px;
+	text-decoration: none;
+}
+
+#submit:hover {
+	opacity: 0.8;
+}
+.container input:focus {
+	border: 2px solid #2980b9;
+}
+a {
+	float: left;
+}
+
+
+
+
+@media only screen and (max-width: 600px){
+	.container {
+		width: 40vh;
+	}
+	h1 {
+		font-size: 60px;
+	}
+}
