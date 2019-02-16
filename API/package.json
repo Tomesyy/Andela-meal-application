@@ -1,14 +1,19 @@
 {
-  "name": "api",
+  "name": "meal-booking-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple meal booking api",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomesyy/Andela-meal-application.git"
+  },
   "author": "Tomesyy",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+  "bugs": {
+    "url": "https://github.com/Tomesyy/Andela-meal-application/issues"
+  },
+  "homepage": "https://github.com/Tomesyy/Andela-meal-application#readme"
 }
