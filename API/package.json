@@ -1,7 +1,7 @@
 {
-  "name": "meal-booking-api",
+  "name": "meal-booking-app",
   "version": "1.0.0",
-  "description": "a simple meal booking api",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node app.js"
@@ -21,11 +21,13 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "babel-cli": "^6.26.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
   "devDependencies": {
     "eslint": "^5.14.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
   }
 }

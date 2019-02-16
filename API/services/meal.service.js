@@ -9,6 +9,7 @@ const mealService = {
             newMeal.name = meal.name;
             newMeal.size = meal.size;
             newMeal.price = meal.price;
+            return newMeal;
         });
         return validMeals;
     },
@@ -22,7 +23,7 @@ const mealService = {
         return meal;
     },
     getMeal(id){
-        const meal = dummyData.meal.find(meal => meal.id = id);
+        const meal = dummyData.meals.find(meal => meal.id == id);
         return meal || {};
     }
 };

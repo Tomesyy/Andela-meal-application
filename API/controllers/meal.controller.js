@@ -6,7 +6,7 @@ const mealController = {
     fetchAllMeals(req, res){
         const allMeals = mealService.fetchAllMeals();
         return res.json({
-            status: 'sucess',
+            status: 'success',
             data: allMeals
         }).status(200);
     },
@@ -32,9 +32,9 @@ const mealController = {
         const id = req.params.id;
         const foundMeal = mealService.getMeal(id);
         return res.json({
-            status: 'sucess',
-            data: allMeals
-        }).status(201);
+            status: 'success',
+            data: foundMeal
+        }).status(200);
 
     }
 
