@@ -25,6 +25,19 @@ const mealService = {
     getMeal(id){
         const meal = dummyData.meals.find(meal => meal.id == id);
         return meal || {};
+    }, 
+    deleteMeal(id){
+        const mealDelete = dummyData.meals.find(meal => meal.id == id);
+        dummyData.meals.splice(mealDelete.id - 1, 1);
+        return mealDelete;
+    }, 
+    updateMeal(id, meal){
+        const mealUpdate = dummyData.meals.find(meal => meal.id == id);
+        mealUpdate.name = meal.name;
+        mealUpdate.size = meal.size;
+        mealUpdate.price = meal.price;
+        return mealUpdate;
+
     }
 };
 
