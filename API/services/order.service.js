@@ -9,12 +9,11 @@ const orderService = {
             newOrder.name = order.name;
             newOrder.amount = order.amount;
             newOrder.price = order.price;
-            newOrder.details = order.details;
             return newOrder;
         });
         return validOrders;
     },
-    addOrder(order){
+    addOrder(order) {
         const orderLength = dummyData.orders.length;
         const lastId = dummyData.orders[orderLength - 1].id;
         const newId = lastId + 1;
@@ -23,13 +22,16 @@ const orderService = {
         dummyData.orders.push(order);
         return order;
     },
-    modifyOrder(id, order){
+    updateOrder(id, order){
         const orderUpdate = dummyData.orders.find(order => order.id == id);
         orderUpdate.name = order.name;
         orderUpdate.amount = order.amount;
-        orderUpdate.details = order.details;
         orderUpdate.price = order.price;
-        return mealUpdate;
+
+        return orderUpdate;
+
     }
     
 }
+
+export default orderService;

@@ -1,29 +1,42 @@
 import orderService from '../services/order.service';
 
+
+
 const orderController = {
     fetchAllOrder(req, res){
         const allOrder = orderService.fetchAllOrder();
-        res.json({
+        return res.json({
             status: 'success',
             data: allOrder
         }).status(200);
     },
     addOrder(req, res){
+        /*
+           Expect json of the format
+
+           {
+               name: 'food',
+               size: 'Large',
+               price: 900
+           }
+        */
+
         const newOrder = req.body;
         const createdOrder = orderService.addOrder(newOrder);
-        res.json({
+        return res.json({
             status: 'success',
             data: createdOrder
         }).status(201);
     },
     updateSingleOrder(req, res){
-        const newUpdate = req.body;
-        const id = req.params.id;
-        const updateOrder = orderService.updateOrder(id, newUpdate);
-        res.json({
-            status: 'success',
-            data: updateOrder
-        }).status(201);
-
+         const newUpdate = req.body;
+         const id = req.params.id;
+         const updateOrder = orderService.updateOrder(id, newUpdate);
+         return res.json({
+             status: 'success',
+             data: updateOrder
+         }).status(200);
     }
 }
+
+export default orderController;
