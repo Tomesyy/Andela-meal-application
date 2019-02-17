@@ -8,7 +8,7 @@ const mealController = {
         return res.json({
             status: 'success',
             data: allMeals
-        }).status(200);
+        }).status(201);
     },
     addMeal(req, res){
         /*

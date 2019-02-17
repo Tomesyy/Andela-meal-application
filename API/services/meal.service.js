@@ -18,7 +18,6 @@ const mealService = {
         const lastId = dummyData.meals[mealLength - 1].id;
         const newId = lastId + 1;
         meal.id = newId;
-        const newMeal = new Meal();
         dummyData.meals.push(meal);
         return meal;
     },

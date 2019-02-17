@@ -63,29 +63,25 @@ export default {
             id: 1,
             name: 'KINGs Asun',
             amount: '2',
-            price: '100',
-            status: 'Not In Menu'
+            price: '100'
         },
         {
             id: 2,
             name: 'Bigman Suya',
             amount: '2',
-            price: '100',
-            status: 'In Menu'
+            price: '100'
         },
         {
             id: 3,
             name: 'Chicken Suya',
             amount: '2',
-            price: '500',
-            status: 'Not In Menu'
+            price: '500'
         },
         {
             id: 4,
             name: 'KINGs Asun',
             amount: '3',
-            price: '100',
-            status: 'In Menu'
+            price: '100'
         },
     ]
 }

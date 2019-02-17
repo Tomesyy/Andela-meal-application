@@ -19,7 +19,6 @@ const menuService = {
         const lastId = dummyData.menus[menuLength - 1].id;
         const newId = lastId + 1;
         menu.id = newId;
-        const newMenu = new Menu();
         dummyData.menus.push(menu);
         return menu;
     }
