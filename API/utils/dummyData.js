@@ -27,5 +27,35 @@ export default {
             size: 'Medium',
             price: '300'
         }
+    ],
+    menus: [
+        {
+            id: 1,
+            name: 'Big man suya',
+            details: 'Roasted meat with hot pepper',
+            price: '1000',
+            delivery: 'FREE'
+        },
+        {
+            id: 2,
+            name: 'Big man suya',
+            details: 'Roasted meat with hot pepper',
+            price: '1000',
+            delivery: '200'
+        },
+        {
+            id: 3,
+            name: 'Big man suya',
+            details: 'Roasted meat with hot pepper',
+            price: '1000',
+            delivery: 'FREE'
+        },
+        {
+            id: 4,
+            name: 'KINGs Asun',
+            details: 'Roasted meat with hot pepper',
+            price: '100',
+            delivery: '250'
+        },
     ]
 }
