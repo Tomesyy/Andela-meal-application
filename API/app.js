@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 // handler
 app.use('/api/v1/meals', mealRoutes);
 app.use('/api/v1/menus', menuRoutes);
-app.use('/api/v1/menus', orderRoutes);
+app.use('/api/v1/orders', orderRoutes);
 
 
 app.listen(PORT, () => {
