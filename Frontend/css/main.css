@@ -37,6 +37,9 @@ li a {
 	color: black;
 	text-decoration: none;
 }
+li a:hover {
+	color: #2a1873; 
+}
 .push{
 	margin-left: auto;
 	display: flex;
