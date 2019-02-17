@@ -4,7 +4,7 @@ class Order {
         this.name = null;
         this.amount = null;
         this.price = null;
-        this.status = null;
+        this.details = null;
     }
 }
 
