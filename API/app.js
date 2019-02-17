@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 // Routes
 import mealRoutes from './routes/meal.routes';
 import menuRoutes from './routes/menu.routes';
+import orderRoutes from './routes/order.routes';
 
 
 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 // handler
 app.use('/api/v1/meals', mealRoutes);
 app.use('/api/v1/menus', menuRoutes);
+app.use('/api/v1/orders', orderRoutes);
 
 
 app.listen(PORT, () => {
