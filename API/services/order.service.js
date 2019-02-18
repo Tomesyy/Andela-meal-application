@@ -7,7 +7,8 @@ const orderService = {
             const newOrder = new Order();
             newOrder.id = order.id;
             newOrder.name = order.name;
-            newOrder.amount = order.amount;
+            newOrder.quantity = order.quantity;
+            newOrder.address = order.address;
             newOrder.price = order.price;
             return newOrder;
         });
@@ -24,13 +25,11 @@ const orderService = {
     updateOrder(id, order){
         const orderUpdate = dummyData.orders.find(order => order.id == id);
         orderUpdate.name = order.name;
-        orderUpdate.amount = order.amount;
+        orderUpdate.quantity = order.quantity;
+        orderUpdate.address = order.address;
         orderUpdate.price = order.price;
-
         return orderUpdate;
-
     }
-    
 }
 
 export default orderService;
