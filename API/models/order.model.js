@@ -2,7 +2,8 @@ class Order {
     constructor(){
         this.id = null;
         this.name = null;
-        this.amount = null;
+        this.quantity = null;
+        this.address = null;
         this.price = null;
     }
 }
