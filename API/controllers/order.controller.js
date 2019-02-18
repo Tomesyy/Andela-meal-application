@@ -11,16 +11,6 @@ const orderController = {
         }).status(200);
     },
     addOrder(req, res){
-        /*
-           Expect json of the format
-
-           {
-               name: 'food',
-               size: 'Large',
-               price: 900
-           }
-        */
-
         const newOrder = req.body;
         const createdOrder = orderService.addOrder(newOrder);
         return res.json({

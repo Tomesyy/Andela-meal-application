@@ -28,11 +28,8 @@ const orderService = {
         orderUpdate.quantity = order.quantity;
         orderUpdate.address = order.address;
         orderUpdate.price = order.price;
-
         return orderUpdate;
-
     }
-    
 }
 
 export default orderService;
