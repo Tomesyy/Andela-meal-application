@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "mocha --require @babel/register",
     "start": "nodemon --exec babel-node app.js"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "mocha": "^6.0.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "should": "^13.2.3"
   }
 }

@@ -23,10 +23,10 @@ const mealController = {
 
         const newMeal = req.body;
         const createdMeal = mealService.addMeal(newMeal);
-        return res.json({
+        res.status(201).json({
             status: 'success',
             data: createdMeal
-        }).status(201);
+        });
     },
     getSingleMeal(req, res){
         const id = req.params.id;
