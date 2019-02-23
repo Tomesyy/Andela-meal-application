@@ -27,8 +27,7 @@ describe('Meals', () => {
     describe('Post /meals', () => {
         it('should not post a meal without a name Field', (done) => {
             const meal = {
-                id: 4,
-                name: 'Garri',
+                id: 1,
                 size: 'Large',
                 price: '450'
             }
@@ -40,7 +39,7 @@ describe('Meals', () => {
                 res.should.have.property('status', 400);
                 res.should.be.a('object');
                 res.body.should.have.property('status').eql('error');
-                res.body.should.have.property('data').eql('Input the Parameters Rightly');
+                res.body.should.have.property('data').eql('Input the Parameter Rightly');
             done();
             });
 
@@ -150,6 +149,7 @@ describe('Meals', () => {
 
             describe('Delete /meals/:id', () => {
                 it('should delete a meal with given Id', (done) => {
+                    const mealId = Number(dummyData.meals[0].id);
                     chai
                     .request(app)
                     .delete(`/api/v1/meals/${mealId}`)
@@ -169,6 +169,7 @@ describe('Meals', () => {
                         res.should.have.status(400);
                         res.body.should.be.a('object');
                         res.body.should.have.property('message').eql(`cannot delete meal with id ${mealId} now`);
+                    done();
                     });
                 });
             });
