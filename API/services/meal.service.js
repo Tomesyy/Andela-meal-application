@@ -27,7 +27,12 @@ const mealService = {
     }, 
     deleteMeal(id){
         const mealDelete = dummyData.meals.find(meal => meal.id == id);
-        dummyData.meals.splice(mealDelete.id - 1, 1);
+        if(mealDelete){
+            const index = dummyData.meals.indexOf(mealDelete);
+            if(index > -1){
+                dummyData.meals.splice(index, 1);
+            }
+        }
         return mealDelete;
     }, 
     updateMeal(id, meal){
@@ -35,7 +40,7 @@ const mealService = {
         mealUpdate.name = meal.name;
         mealUpdate.size = meal.size;
         mealUpdate.price = meal.price;
-        return mealUpdate;
+        return mealUpdate || {};
 
     }
 };

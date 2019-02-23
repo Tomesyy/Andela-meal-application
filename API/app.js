@@ -26,8 +26,9 @@ app.use('/api/v1/menus', menuRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
 
+export default app;
+
 app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
 });
 
-export default app;
