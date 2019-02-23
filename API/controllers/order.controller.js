@@ -5,13 +5,21 @@ import orderService from '../services/order.service';
 const orderController = {
     fetchAllOrder(req, res){
         const allOrder = orderService.fetchAllOrder();
-        return res.json({
+        return res.status(200).json({
             status: 'success',
             data: allOrder
-        }).status(200);
+        });
     },
     addOrder(req, res){
         const newOrder = req.body;
+
+        if(!newOrder.name || !newOrder.price || !newOrder.delivery || !newOrder.delivery || !newOrder.quantity){
+            return res.status(400).json({
+                status: 'error',
+                data: 'Input the Parameters Rightly'
+            });
+        }
+
         const createdOrder = orderService.addOrder(newOrder);
         return res.json({
             status: 'success',
@@ -20,7 +28,14 @@ const orderController = {
     },
     updateSingleOrder(req, res){
          const newUpdate = req.body;
-         const id = req.params.id;
+         const { id } = req.params;
+
+         if(Number.isNaN(Number(id))) {
+            return res.status(400).json({
+                message: 'Please make sure you input a Number'
+            });
+        }
+
          const updateOrder = orderService.updateOrder(id, newUpdate);
          return res.json({
              status: 'success',
