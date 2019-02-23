@@ -4,10 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --require @babel/register",
-    "cover": "istanbul cover _mocha",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "start": "nodemon --exec babel-node app.js"
+    "test": "nyc --require @babel/register --reporter=text mocha --timeout 10000 --exit",
+    "start": "nodemon --exec babel-node index.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
