@@ -46,7 +46,7 @@ describe('Meals', () => {
         });
         it('should Post a meal', (done) => {
             const meal = {
-                id: 4,
+                id: 1,
                 name: 'Garri',
                 size: 'Large',
                 price: '450'

@@ -13,7 +13,7 @@ const orderController = {
     addOrder(req, res){
         const newOrder = req.body;
 
-        if(!newOrder.name || !newOrder.price || !newOrder.delivery || !newOrder.delivery || !newOrder.quantity){
+        if(!newOrder.name || !newOrder.price || !newOrder.address || !newOrder.quantity){
             return res.status(400).json({
                 status: 'error',
                 data: 'Input the Parameters Rightly'
