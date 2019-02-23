@@ -144,36 +144,34 @@ describe('Meals', () => {
                 res.body.should.have.property('message').eql('Please make sure you input a Number');
             done();
             });
-
+        }); 
+    });   
             //Test the delete Route
 
-            describe('Delete /meals/:id', () => {
-                it('should delete a meal with given Id', (done) => {
-                    const mealId = Number(dummyData.meals[0].id);
-                    chai
-                    .request(app)
-                    .delete(`/api/v1/meals/${mealId}`)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('status').eql('success');
-                    done();
-                    });
-                });
-                it('should not delete if Id id null', (done) => {
-                    const mealId = 'o';
-                    chai
-                    .request(app)
-                    .delete(`/api/v1/meals/${mealId}`)
-                    .end((err, res) => {
-                        res.should.have.status(400);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('message').eql(`cannot delete meal with id ${mealId} now`);
-                    done();
-                    });
-                });
+    describe('Delete /meals/:id', () => {
+        it('should delete a meal with given Id', (done) => {
+            const mealId = Number(dummyData.meals[0].id);
+            chai
+            .request(app)
+            .delete(`/api/v1/meals/${mealId}`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('status').eql('success');
+            done();
             });
-
+        });
+        it('should not delete if Id id null', (done) => {
+            const mealId = 'o';
+            chai
+            .request(app)
+            .delete(`/api/v1/meals/${mealId}`)
+            .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql(`cannot delete meal with id ${mealId} now`);
+            done();
+            });
         });
     });
 });
