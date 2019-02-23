@@ -21,10 +21,10 @@ const orderController = {
         }
 
         const createdOrder = orderService.addOrder(newOrder);
-        return res.json({
+        return res.status(201).json({
             status: 'success',
             data: createdOrder
-        }).status(201);
+        });
     },
     updateSingleOrder(req, res){
          const newUpdate = req.body;
@@ -37,10 +37,10 @@ const orderController = {
         }
 
          const updateOrder = orderService.updateOrder(id, newUpdate);
-         return res.json({
+         return res.status(201).json({
              status: 'success',
              data: updateOrder
-         }).status(200);
+         });
     }
 }
 
