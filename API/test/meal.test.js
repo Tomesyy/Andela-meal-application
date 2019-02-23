@@ -19,7 +19,7 @@ describe('Meals', () => {
                 res.should.have.property('status', 200);
                 res.should.be.json;
                 res.body.data.should.be.a('array');
-                done();
+            done();
             });
         });
     });
