@@ -11,14 +11,11 @@ import orderRoutes from './routes/order.routes';
 
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    return res.send('API is working');
-});
-
+app.get('/', (req, res) => res.send('API is working'));
 
 // handler
 app.use('/api/v1/meals', mealRoutes);
