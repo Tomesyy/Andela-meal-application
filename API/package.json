@@ -4,11 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --require @babel/register ---reporter=html --reporter=text mocha test/**.test.js --timeout 10000 --exit",
-    "dev": "nodemon --exec babel-node app.js",
-    "start": "nodemon --exec babel-node app.js",
-    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./npm-debug.log,./.travis.yml,./.eslintrc.js,./UI,./README.md",
-    "clean": "rm -rf build && mkdir build",
+    "test": "nyc --require @babel/register --reporter=text mocha --timeout 10000 --exit",
+    "dev": "nodemon --exec babel-node index.js",
+    "start": "node build/index.js",
+    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
+    "clean": "mkdir build",
     "build": "npm run clean && npm run build-babel",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -23,15 +23,15 @@
   },
   "homepage": "https://github.com/Tomesyy/Andela-meal-application#readme",
   "dependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
-    "babel-cli": "^6.26.0",
+    "@babel/register": "^7.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "coveralls": "^3.0.3",
