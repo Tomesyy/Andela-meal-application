@@ -5,9 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "nyc --require @babel/register --reporter=text mocha --timeout 10000 --exit",
-    "dev": "nodemon --exec babel-node index.js",
-    "start": "node build/index.js",
-    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
+    "dev": "nodemon --exec babel-node app.js",
+    "start": "node build/app.js",
+    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./Frontend,./README.md",
     "clean": "mkdir build",
     "build": "npm run clean && npm run build-babel",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
