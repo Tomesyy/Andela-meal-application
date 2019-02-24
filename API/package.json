@@ -10,7 +10,8 @@
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./Frontend,./README.md",
     "clean": "mkdir build",
     "build": "npm run clean && npm run build-babel",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test-coverage": "nyc report --reporter=text-lcov | codeclimate-test-reporter"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.0.3",
     "eslint": "^5.14.0",
     "eslint-config-airbnb-base": "^13.1.0",

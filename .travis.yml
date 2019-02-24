@@ -5,6 +5,9 @@ before_install: cd API/
 cache:
   directories:
     - "node_modules"
+env:
+  global:
+  - CODECLIMATE_REPO_TOKEN=cau12727gw91277e2973713792u3fe8dqw81286f
 install:
   - npm install
 script:
