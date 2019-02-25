@@ -48,11 +48,9 @@ h5{
 	font-style: italic;
 	font-weight: normal;
 	font-size: 1em;
-	display: ;
 }
 p {
 	margin-top: 4px;
-	display: 
 	font-weight: bold;
 }
 #vieworder{
@@ -80,11 +78,6 @@ p {
 }
 .orderA-btn {
 	opacity: 0.6;
-}
-.orderA-btn:hover {
-	/*background-color: white;
-	color: #4CAF50;
-	border: 1px solid #4CAF50;*/
 }
 #vieworder {
   background-color: #E96694; /* Green */
