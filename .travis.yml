@@ -7,7 +7,7 @@ cache:
     - "node_modules"
 env:
   global:
-  - CODECLIMATE_REPO_TOKEN=cau12727gw91277e2973713792u3fe8dqw81286f
+  - CODECLIMATE_REPO_TOKEN=40fde92b95fbd05ecdec8d596edd98342c027a3bb8fe75709efa7c8600dae9c0
 install:
   - npm install
 script:
