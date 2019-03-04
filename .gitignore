@@ -1,9 +1,10 @@
-API/node_modules/
+node_modules/
 Frontend/node_modules/
 node_modules/
 
 #nyc directory
 /api/.nyc_output/
+.nyc_output/
 
 #coverage dir
 /api/coverage
