@@ -2,13 +2,13 @@
   "name": "meal-booking-app",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "API/app.js",
   "scripts": {
-    "test": "nyc --require @babel/register --reporter=text mocha --timeout 10000 --exit",
-    "dev": "nodemon --exec babel-node app.js",
-    "start": "node build/app.js",
+    "test": "nyc --require @babel/register --reporter=text mocha api/test --timeout 10000 --exit",
+    "dev": "nodemon --exec babel-node api/app.js",
+    "start": "node api/build/app.js",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./Frontend,./README.md",
-    "clean": "mkdir build",
+    "clean": "rm -rf && mkdir build",
     "build": "npm run clean && npm run build-babel",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test-coverage": "nyc report --reporter=text-lcov | codeclimate-test-reporter"
