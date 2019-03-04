@@ -4,9 +4,9 @@
   "description": "",
   "main": "API/app.js",
   "scripts": {
-    "test": "nyc --require @babel/register --reporter=text mocha api/test --timeout 10000 --exit",
-    "dev": "nodemon --exec babel-node api/app.js",
-    "start": "node api/build/app.js",
+    "test": "nyc --require @babel/register --reporter=text mocha API/test --timeout 10000 --exit",
+    "dev": "nodemon --exec babel-node API/app.js",
+    "start": "node API/build/app.js",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./Frontend,./README.md",
     "clean": "rm -rf && mkdir build",
     "build": "npm run clean && npm run build-babel",
