@@ -5,15 +5,18 @@ import mealService from '../services/meal.service'
 const mealController = {
     fetchAllMeals(req, res){
         const allMeals = mealService.fetchAllMeals();
-        return res.status(200).json({
-            status: 'success',
-            data: allMeals
-        });
+        return allMeals
+            .then(meal => {
+                res.status(200).json({
+                status: 'success',
+                data: meal
+                })
+            })
+            .catch(err => console.log(err));
     },
     addMeal(req, res){
         /*
-           Expect json of the format
-
+           Expect json of the forma
            {
                name: 'food',
                size: 'Large',
@@ -23,19 +26,23 @@ const mealController = {
 
         const newMeal = req.body;
 
-        if(!newMeal.name || !newMeal.price || !newMeal.size) {
+        if(!newMeal.name || !newMeal.quantity || !newMeal.imageUrl) {
             return res.status(400).json({
                 status: 'error',
                 data: ('Input the Parameter Rightly')
             });
         }
         const createdMeal = mealService.addMeal(newMeal);
-        return res.status(201).json({
-            status: 'success',
-            data: createdMeal
-        });
+        return createdMeal
+            .then(meal => {
+                res.status(201).json({
+                status: 'success',
+                data: meal
+                })
+            })
+            .catch(err => console.log(err));
     },
-    getSingleMeal(req, res){
+    getSingleMeal(req, res) {
         const id = req.params.id;
         const foundMeal = mealService.getMeal(id);
         if(Number.isNaN(Number(id))) {
@@ -44,13 +51,15 @@ const mealController = {
                 data: 'Your id is not a number! it must be a number'
             });
         } else {
-            return res.status(200).json({
-                status: 'success',
-                data: foundMeal
-            });
+            return foundMeal
+                .then(meal => {
+                    res.status(200).json({
+                    status: 'success',
+                    data: meal
+                  })
+                })
+                .catch(err => console.log(err));
         }
-        
-
     },
     deleteSingleMeal(req, res){
         const id = req.params.id;
@@ -61,11 +70,14 @@ const mealController = {
                 message: `cannot delete meal with id ${id} now`
             });
         }
-
-        return res.status(200).json({
-            status: 'success',
-            data: deleteMeal
-        });
+        return deleteMeal
+            .then(meal => {
+                res.status(200).json({
+                    status: 'success',
+                    data: meal
+                });
+            })
+            .catch(err => console.log(err)); 
 
     },
     updateSingleMeal(req, res){
@@ -78,10 +90,14 @@ const mealController = {
              });
          }
          const updateMeal = mealService.updateMeal(id, newUpdate);
-         return res.status(201).json({
-             status: 'success',
-             data: updateMeal
-         });
+         return updateMeal
+            .then(meal => {
+                res.status(201).json({
+                    status: 'success',
+                    data: meal
+                });
+            })
+            .catch(err => console.log(err));
     }
 
 }
