@@ -6,10 +6,11 @@ import User from './models/users.model';
 import Caterer from './models/caterers.model';
 import Menu from './models/menu.model';
 import Order from './models/order.model';
+import AuthController from './controllers/auth.controller';
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 const VERSION_API = '/api/v1'
 
 app.use(bodyParser.json());
@@ -24,6 +25,7 @@ import orderRoutes from './routes/order.routes';
 app.get('/', (req, res) => res.send('API is working'));
 
 // handler
+app.use(`${VERSION_API}/auth`, AuthController);
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
@@ -37,9 +39,9 @@ Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
 
 db.sync()
   .then(() => {
-    app.listen(PORT)
+    app.listen(PORT);
   })
-  .catch(err => console.log(err));
+  .catch(error => console.log(error));
 
 // app.listen(PORT, () => {
 //   console.log(`Server is running on PORT ${PORT}`);
