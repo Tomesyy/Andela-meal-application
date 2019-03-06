@@ -1,36 +1,35 @@
 import Sequelize from 'sequelize';
 import db from '../utils/database';
 
-const Meal = db.define('meals', { 
+const User = db.define('users', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    name: {
+    firstname: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    imageUrl: {
+    lastname: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    quantity: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    details: {
+    username: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    catererId: {
-        type: Sequelize.INTEGER,
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    isAdmin: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
     },
     createdAt: Sequelize.DATEONLY,
     updatedAt: Sequelize.DATEONLY
-
 });
 
-export default Meal;
+export default User

@@ -2,30 +2,38 @@ export default {
     meals: [
         {
             id: 1,
-            name: 'Fried Rice',
-            size: 'Medium',
-            price: '450'
+            name: 'bread and beans',
+            imageUrl: 'google.com/',
+            details: 'best meal ever',
+            quantity: '2',
+            catererId: '20'
         },
         
         {
             id: 2,
-            name: 'Jollof Rice',
-            size: 'Large',
-            price: '550'
+            name: 'bread and beans',
+            imageUrl: 'google.com/',
+            details: 'best meal ever',
+            quantity: '2',
+            catererId: '20'
         },
         
         {
             id: 3,
-            name: 'Beans',
-            size: 'Small',
-            price: '150'
+            name: 'bread and beans',
+            imageUrl: 'google.com/',
+            details: 'best meal ever',
+            quantity: '2',
+            catererId: '20'
         },
         
         {
             id: 4,
-            name: 'Eba & Semo',
-            size: 'Medium',
-            price: '300'
+            name: 'bread and beans',
+            imageUrl: 'google.com/',
+            details: 'best meal ever',
+            quantity: '2',
+            catererId: '20'
         }
     ],
     menus: [

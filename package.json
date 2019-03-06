@@ -2,13 +2,13 @@
   "name": "meal-booking-app",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "API/app.js",
   "scripts": {
-    "test": "nyc --require @babel/register --reporter=text mocha --timeout 10000 --exit",
-    "dev": "nodemon --exec babel-node app.js",
-    "start": "node build/app.js",
+    "test": "nyc --require @babel/register --reporter=text mocha API/test --timeout 10000 --exit",
+    "dev": "nodemon --exec babel-node API/app.js",
+    "start": "node API/build/app.js",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./Frontend,./README.md",
-    "clean": "mkdir build",
+    "clean": "rm -rf && mkdir build",
     "build": "npm run clean && npm run build-babel",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test-coverage": "nyc report --reporter=text-lcov | codeclimate-test-reporter"
@@ -30,7 +30,10 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "pg": "^7.8.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.43.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

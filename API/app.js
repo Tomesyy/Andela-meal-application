@@ -1,5 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path';
+import Meal from './models/meal.model';
+import User from './models/users.model';
+import Caterer from './models/caterers.model';
+import Menu from './models/menu.model';
+import Order from './models/order.model';
 
 
 const app = express();
@@ -7,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 const VERSION_API = '/api/v1'
 
 app.use(bodyParser.json());
+
+import db from './utils/database';
 
 // Routes
 import mealRoutes from './routes/meal.routes';
@@ -21,9 +29,21 @@ app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on PORT ${PORT}`);
-});
+User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
+Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+
+
+db.sync()
+  .then(() => {
+    app.listen(PORT)
+  })
+  .catch(err => console.log(err));
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on PORT ${PORT}`);
+// });
 
 export default app;
 
