@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 
 const db = new Sequelize('andelamealapplicationdatabase', 'postgres', 'bluwaters2001', {
+  logging: false,
   host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,
