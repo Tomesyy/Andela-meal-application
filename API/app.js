@@ -6,7 +6,8 @@ import User from './models/users.model';
 import Caterer from './models/caterers.model';
 import Menu from './models/menu.model';
 import Order from './models/order.model';
-import AuthRoutes from './routes/auth.routes';
+import UserRoutes from './routes/user.routes';
+import CatererRoutes from './routes/caterer.routes';
 
 
 const app = express();
@@ -25,7 +26,8 @@ import orderRoutes from './routes/order.routes';
 app.get('/', (req, res) => res.send('API is working'));
 
 // handler
-app.use(`${VERSION_API}/auth`, AuthRoutes);
+app.use(`${VERSION_API}/auth`, UserRoutes);
+app.use(`${VERSION_API}/auth/caterer`, CatererRoutes);
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
