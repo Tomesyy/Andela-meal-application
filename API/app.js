@@ -26,7 +26,7 @@ import orderRoutes from './routes/order.routes';
 app.get('/', (req, res) => res.send('API is working'));
 
 // handler
-app.use(`${VERSION_API}/auth`, UserRoutes);
+app.use(`${VERSION_API}/auth/user`, UserRoutes);
 app.use(`${VERSION_API}/auth/caterer`, CatererRoutes);
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
