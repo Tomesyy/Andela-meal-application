@@ -9,9 +9,10 @@ class AuthController {
                 throw new Error('Token not provided');
             }
             const jwtToken = token.split(' ')[1];
-            const decoded = await jwt.verify(jwtToken, secret);
+            const decoded = await jwt.verify(jwtToken, config.secret);
             return decoded;
         } catch (err) {
+            console.log(err);
             throw new Error('Invalid Auth Token');
         }
     }
