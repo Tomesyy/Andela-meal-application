@@ -6,7 +6,7 @@ import User from './models/users.model';
 import Caterer from './models/caterers.model';
 import Menu from './models/menu.model';
 import Order from './models/order.model';
-import AuthController from './controllers/auth.controller';
+import AuthRoutes from './routes/auth.routes';
 
 
 const app = express();
@@ -25,7 +25,7 @@ import orderRoutes from './routes/order.routes';
 app.get('/', (req, res) => res.send('API is working'));
 
 // handler
-app.use(`${VERSION_API}/auth`, AuthController);
+app.use(`${VERSION_API}/auth`, AuthRoutes);
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
@@ -42,10 +42,7 @@ db.sync()
     app.listen(PORT);
   })
   .catch(error => console.log(error));
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on PORT ${PORT}`);
-// });
+  
 
 export default app;
 
