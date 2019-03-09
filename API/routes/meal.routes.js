@@ -3,16 +3,17 @@ import { Router } from 'express';
 
 //controller
 import mealController from '../controllers/meal.controller';
-
+//auth controllers
+import AuthController from '../controllers/auth.controller';
 
 
 const router = Router();
 
-router.get('/', mealController.fetchAllMeals);
-router.post('/', mealController.addMeal);
-router.get('/:id', mealController.getSingleMeal);
-router.delete('/:id', mealController.deleteSingleMeal);
-router.put('/:id', mealController.updateSingleMeal);
+router.get('/', AuthController.verifyAdmin, mealController.fetchAllMeals);
+router.post('/', AuthController.verifyAdmin, mealController.addMeal);
+router.get('/:id', AuthController.verifyAdmin, mealController.getSingleMeal);
+router.delete('/:id', AuthController.verifyAdmin, mealController.deleteSingleMeal);
+router.put('/:id', AuthController.verifyAdmin, mealController.updateSingleMeal);
 
 
 

@@ -32,7 +32,7 @@ class AuthController {
 
     static async verifyAdmin(req, res, next) {
         try {
-            const decoded = await AbortController.decodeToken(req);
+            const decoded = await AuthController.decodeToken(req);
             if(!decoded.isCaterer) {
                 throw new Error('Unauthorized');
             }
