@@ -1,11 +1,23 @@
-class Menu {
-    constructor(){
-        this.id = null;
-        this.name = null;
-        this.details = null;
-        this.price = null;
-        this.delivery = null;
-    }
-}
+import Sequelize from 'sequelize';
+import db from '../utils/database';
+
+const Menu = db.define('menus', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    meals: {
+        type: Sequelize.JSON,
+        allowNull: false
+    },
+    catererId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    createdAt: Sequelize.DATEONLY,
+    updatedAt: Sequelize.DATEONLY
+});
 
 export default Menu;

@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
 //controller
-import mealController from '../controllers/menu.controller';
+import menuController from '../controllers/menu.controller';
 
 const router = Router();
 
-router.get('/', mealController.fetchAllMenu);
-router.post('/', mealController.createMeal);
+router.get('/', menuController.fetchAllMenu);
+router.post('/', menuController.createMeal);
 
 
 export default router;

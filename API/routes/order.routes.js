@@ -12,6 +12,7 @@ const router = Router();
 router.get('/', orderController.fetchAllOrder);
 router.post('/', orderController.addOrder);
 router.put('/:id', orderController.updateSingleOrder);
+router.delete('/:id', orderController.deleteSingleOrder);
 
 
 
