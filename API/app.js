@@ -42,6 +42,8 @@ Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
 db.sync()
   .then(() => {
     app.listen(PORT);
+    console.log(`Server is running on PORT ${PORT}`);
+    console.log('Database connected!');
   })
   .catch(error => console.log(error));
   
