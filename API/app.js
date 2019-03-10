@@ -33,11 +33,6 @@ app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
 
 
-User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
-Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-
 
 db.sync()
   .then(() => {
