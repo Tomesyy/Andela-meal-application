@@ -23,8 +23,8 @@ const mealController = {
                price: 900
            }
         */
-
-        const newMeal = req.body;
+        const { name, quantity, imageUrl, details } = req.body;
+        const newMeal = { name, quantity, imageUrl, details, catererId: req.caterer.id }
 
         if(!newMeal.name || !newMeal.quantity || !newMeal.imageUrl) {
             return res.status(400).json({
