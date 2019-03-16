@@ -12,8 +12,8 @@ import CatererRoutes from './routes/caterer.routes';
 
 
 const app = express();
-const PORT = process.env.PORT || 8000;
-const VERSION_API = '/api/v1'
+const PORT = 3000;
+const VERSION_API = '/api/v1';
 
 app.use(bodyParser.json());
 

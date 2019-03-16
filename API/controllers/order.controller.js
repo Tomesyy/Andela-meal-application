@@ -7,7 +7,7 @@ const orderController = {
         const allOrder = orderService.fetchAllOrder();
         return allOrder
             .then(order => {
-                res.status(200).json({
+                res.status(201).json({
                     status: 'success',
                     data: order
                 })
@@ -47,7 +47,7 @@ const orderController = {
          const updateOrder = orderService.updateOrder(id, newUpdate);
          return updateOrder
             .then(order => {
-                res.status(201).json({
+                res.status(200).json({
                     status: 'success',
                     data: order
                 });

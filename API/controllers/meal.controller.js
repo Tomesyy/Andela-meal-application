@@ -23,13 +23,12 @@ const mealController = {
                price: 900
            }
         */
-        const { name, quantity, imageUrl, details } = req.body;
-        const newMeal = { name, quantity, imageUrl, details, catererId: req.caterer.id }
+        const newMeal = req.body;
 
-        if(!newMeal.name || !newMeal.quantity || !newMeal.imageUrl) {
+        if(!newMeal.name || !newMeal.quantity || !newMeal.imageUrl || !newMeal.details || !newMeal.catererId ) {
             return res.status(400).json({
                 status: 'error',
-                data: ('Input the Parameter Rightly')
+                data: 'Input the Parameter Rightly'
             });
         }
         const createdMeal = mealService.addMeal(newMeal);
@@ -65,9 +64,9 @@ const mealController = {
         const id = req.params.id;
         const deleteMeal = mealService.deleteMeal(id);
 
-        if(deleteMeal == null) {
+        if(Number.isNaN(Number(id))) {
             return res.status(400).json({
-                message: `cannot delete meal with id ${id} now`
+                message: 'Please make sure you input a Number'
             });
         }
         return deleteMeal
