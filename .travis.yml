@@ -5,12 +5,13 @@ before_install: cd API/
 cache:
   directories:
     - "node_modules"
-env:
-  global:
-  - CODECLIMATE_REPO_TOKEN=40fde92b95fbd05ecdec8d596edd98342c027a3bb8fe75709efa7c8600dae9c0
 install:
   - npm install
-script:
-  - npm test
+services:
+  - postgresql
+before_script:
+  - psql -c "DROP DATABASE travis;" -U postgres
+  - psql -c "CREATE DATABASE travis;" -U postgres
+  - psql -c "CREATE USER root WITH PASSWORD 'password';" -U postgres
 after_success:
   - npm run coverage

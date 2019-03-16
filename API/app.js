@@ -1,17 +1,19 @@
+import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
-import Meal from './models/meal.model';
-import User from './models/users.model';
-import Caterer from './models/caterers.model';
-import Menu from './models/menu.model';
-import Order from './models/order.model';
-import AuthRoutes from './routes/auth.routes';
+// import Meal from './models/meal.model';
+// import User from './models/users.model';
+// import Caterer from './models/caterers.model';
+// import Menu from './models/menu.model';
+// import Order from './models/order.model';
+import UserRoutes from './routes/user.routes';
+import CatererRoutes from './routes/caterer.routes';
 
 
 const app = express();
-const PORT = process.env.PORT || 8000;
-const VERSION_API = '/api/v1'
+const PORT = 3000;
+const VERSION_API = '/api/v1';
 
 app.use(bodyParser.json());
 
@@ -25,21 +27,19 @@ import orderRoutes from './routes/order.routes';
 app.get('/', (req, res) => res.send('API is working'));
 
 // handler
-app.use(`${VERSION_API}/auth`, AuthRoutes);
+app.use(`${VERSION_API}/auth/user`, UserRoutes);
+app.use(`${VERSION_API}/auth/caterer`, CatererRoutes);
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
 
 
-User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
-Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-
 
 db.sync()
   .then(() => {
     app.listen(PORT);
+    console.log(`Server is running on PORT ${PORT}`);
+    console.log('Database connected!');
   })
   .catch(error => console.log(error));
   

@@ -12,7 +12,7 @@ const menuController = {
             })
             .catch(err => console.log(err));
     }, 
-    createMeal(req, res){
+    createMenu(req, res){
         const newMenu = req.body;
 
         if(!newMenu.meals || !newMenu.catererId){

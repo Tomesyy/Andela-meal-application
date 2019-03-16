@@ -9,7 +9,7 @@ const mealService = {
         return Meal.create(meal);
     },
     getMeal(id){
-        return Meal.find({
+        return Meal.findOne({
             where: {
                 id: id
             }
