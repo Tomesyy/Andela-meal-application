@@ -17,7 +17,12 @@ class UserController {
         try{
             const { firstname, lastname, username, password, isAdmin } = req.body;
             const hashedPassword = await bcrypt.hashSync(password, 10);
+            const usernameIni = await User.findOne({ where: { username: username }});
             const user = await User.create({ firstname, lastname, username,  password: hashedPassword, isAdmin });
+
+            if(usernameIni){
+                throw new Error('User with that username already exist');
+            }
             const safeUser = {
             id: user.id,
             firstname: user.firstname,

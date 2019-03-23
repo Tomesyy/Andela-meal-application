@@ -8,7 +8,12 @@ class CatererController {
         try{
             const { firstname, lastname, username, password, isAdmin } = req.body;
             const hashedPassword = await bcrypt.hashSync(password, 10);
+            const usernameIni = await Caterer.findOne({ where: { username: username }});
             const caterer = await Caterer.create({ firstname, lastname, username,  password: hashedPassword, isAdmin });
+
+            if(usernameIni){
+                throw new Error('Caterer with username already exists');
+            }
             const safeCaterer = {
                 id: caterer.id,
                 firstname: caterer.firstname,
