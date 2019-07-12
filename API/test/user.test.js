@@ -76,7 +76,7 @@ describe('User', () => {
             const newUser = {
               firstname: 'Adetomiwa',
               lastname: 'Adesanya',
-              username: 'tomesyy',
+              username: 'tomesyyy',
               password: 'password',
               isAdmin: 'false'
             };
