@@ -20,16 +20,17 @@ const Caterer = db.define('caterers', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    username: {
+    email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    isAdmin: {
-        type: Sequelize.BOOLEAN,
+    catering_Company: {
+        type: Sequelize.STRING,
         allowNull: false
     },
     createdAt: Sequelize.DATEONLY,

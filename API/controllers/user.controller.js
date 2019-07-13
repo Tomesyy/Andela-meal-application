@@ -1,12 +1,3 @@
-// import express from 'express';
-// import { Router } from 'express';
-// import bodyParser from 'body-parser';
-
-// const router = Router();
-
-// router.use(bodyParser.urlencoded({ extended: false }));
-// router.use(bodyParser.json());
-
 import User from '../models/users.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -15,23 +6,24 @@ import config from '../config';
 class UserController {
     static async registerUser(req, res){
         try{
-            const { firstname, lastname, username, password, isAdmin } = req.body;
-            const hashedPassword = await bcrypt.hashSync(password, 10);
-            const usernameIni = await User.findOne({ where: { username: username }});
-            const user = await User.create({ firstname, lastname, username,  password: hashedPassword, isAdmin });
-
-            if(usernameIni){
-                throw new Error('User with that username already exist');
+            const { firstname, lastname, email, password } = req.body;
+            if(!firstname || !lastname || !email || !password){
+                throw new Error('Incorrect parameters');
             }
+            const hashedPassword = await bcrypt.hashSync(password, 10);
+            const emailIni = await User.findOne({ where: { email: email }});
+            if(emailIni){
+                throw new Error('User with that email already exist');
+            }
+            const user = await User.create({ firstname, lastname, email,  password: hashedPassword });
             const safeUser = {
-            id: user.id,
-            firstname: user.firstname,
-            lastname: user.lastname,
-            username: user.username,
-            isAdmin: user.isAdmin
+                id: user.id,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                email: user.email
             };
             const jwtToken = jwt.sign({ user: safeUser }, config.secret, {
-            expiresIn: 86400
+                expiresIn: 86400
             });
             return res.status(201).json({
                 status: 'success',
@@ -48,21 +40,23 @@ class UserController {
     }
     static async loginUser(req, res){
         try {
-            const { username, password } = req.body;
-            const user = await User.findOne({ where: { username } });
+            const { email, password } = req.body;
+            if(!email || !password){
+                throw new Error('Incorrect parameters');
+            }
+            const user = await User.findOne({ where: { email } });
             if (!user) {
-                throw new Error(`User with that username does not exist`);
+                throw new Error(`User does not exist`);
             };
             const result = await bcrypt.compare(password, user.password);
             if (!result) {
                 throw new Error(`Password doesn't match our records`);
             };
             const safeUser = {
-            id: user.id,
-            firstname: user.firstname,
-            lastname: user.lastname,
-            username: user.username,
-            isAdmin: user.isAdmin
+                id: user.id,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                email: user.username
             };
             const jwtToken = jwt.sign({ user: safeUser }, config.secret, {
                expiresIn: 86400
@@ -73,7 +67,7 @@ class UserController {
                     message: 'User Logged In',
                     token: `Bearer ${jwtToken}`,
                     user: safeUser
-            });
+                });
         } catch (err) {
             return res.status(500).json({
                 status: 'error',

@@ -18,16 +18,13 @@ const User = db.define('users', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    username: {
+    email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    isAdmin: {
-        type: Sequelize.BOOLEAN,
         allowNull: false
     },
     createdAt: Sequelize.DATEONLY,

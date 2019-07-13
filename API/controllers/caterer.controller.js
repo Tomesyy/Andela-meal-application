@@ -6,20 +6,22 @@ import config from '../config';
 class CatererController {
     static async registerCaterer(req, res){
         try{
-            const { firstname, lastname, username, password, isAdmin } = req.body;
-            const hashedPassword = await bcrypt.hashSync(password, 10);
-            const usernameIni = await Caterer.findOne({ where: { username: username }});
-            const caterer = await Caterer.create({ firstname, lastname, username,  password: hashedPassword, isAdmin });
-
-            if(usernameIni){
-                throw new Error('Caterer with username already exists');
+            const { firstname, lastname, email, catering_Company, password } = req.body;
+            if(!firstname || !lastname || !email || !catering_Company || !password){
+                throw new Error('Incorrect parameters');
             }
+            const hashedPassword = await bcrypt.hashSync(password, 10);
+            const emailIni = await Caterer.findOne({ where: { email: email }});
+            if(emailIni){
+                throw new Error('Caterer already exists');
+            }
+            const caterer = await Caterer.create({ firstname, lastname, email,  password: hashedPassword, catering_Company });
             const safeCaterer = {
                 id: caterer.id,
                 firstname: caterer.firstname,
                 lastname: caterer.lastname,
-                username: caterer.username,
-                isAdmin: caterer.isAdmin
+                email: caterer.email,
+                catering_Company: caterer.catering_Company
             };
             const jwtToken = jwt.sign({ caterer : safeCaterer, isCaterer: true }, config.secret, {
                 expiresIn: 86400
@@ -40,10 +42,13 @@ class CatererController {
 
     static async loginCaterer(req, res){
         try {
-            const { username, password } = req.body;
-            const caterer = await Caterer.findOne({ where: { username } });
+            const { email, password } = req.body;
+            if(!email || !password){
+                throw new Error('Incorrect parameters');
+            }
+            const caterer = await Caterer.findOne({ where: { email } });
             if (!caterer) {
-                throw new Error(`Caterer with that username does not exist`);
+                throw new Error(`Caterer does not exist`);
             };
             const result = await bcrypt.compare(password, caterer.password);
             if (!result) {
@@ -53,8 +58,8 @@ class CatererController {
                 id: caterer.id,
                 firstname: caterer.firstname,
                 lastname: caterer.lastname,
-                username: caterer.username,
-                isAdmin: caterer.isAdmin
+                email: caterer.email,
+                catering_Company: caterer.catering_Company
             };
             const jwtToken = jwt.sign({ caterer: safeCaterer, isCaterer: true }, config.secret, {
                expiresIn: 86400
