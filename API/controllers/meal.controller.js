@@ -8,8 +8,8 @@ const mealController = {
         return allMeals
             .then(meal => {
                 res.status(200).json({
-                status: 'success',
-                data: meal
+                    status: 'success',
+                    data: meal
                 })
             })
             .catch(err => console.log(err));
@@ -35,8 +35,8 @@ const mealController = {
         return createdMeal
             .then(meal => {
                 res.status(201).json({
-                status: 'success',
-                data: meal
+                    status: 'success',
+                    data: meal
                 })
             })
             .catch(err => console.log(err));

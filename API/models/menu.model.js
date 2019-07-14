@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize';
 import db from '../utils/database';
 
+import Caterer from './caterers.model';
+
 const Menu = db.define('menus', {
     id: {
         type: Sequelize.INTEGER,
@@ -19,5 +21,7 @@ const Menu = db.define('menus', {
     createdAt: Sequelize.DATEONLY,
     updatedAt: Sequelize.DATEONLY
 });
+
+Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
 
 export default Menu;
