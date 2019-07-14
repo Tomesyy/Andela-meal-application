@@ -20,8 +20,12 @@ const Meal = db.define('meals', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    details: {
-        type: Sequelize.STRING,
+    price: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    catererId: {
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     createdAt: Sequelize.DATEONLY,

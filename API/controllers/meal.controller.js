@@ -1,103 +1,115 @@
-import mealService from '../services/meal.service'
+import Meal from '../models/meal.model';
 
 
 
-const mealController = {
-    fetchAllMeals(req, res){
-        const allMeals = mealService.fetchAllMeals();
-        return allMeals
-            .then(meal => {
-                res.status(200).json({
-                    status: 'success',
-                    data: meal
-                })
-            })
-            .catch(err => console.log(err));
-    },
-    addMeal(req, res){
-        /*
-           Expect json of the forma
-           {
-               name: 'food',
-               size: 'Large',
-               price: 900
-           }
-        */
-        const newMeal = req.body;
-
-        if(!newMeal.name || !newMeal.quantity || !newMeal.imageUrl || !newMeal.details || !newMeal.catererId ) {
-            return res.status(400).json({
+class mealController  {
+    static async fetchAllMeals(req, res){
+        try {
+            const meals = await Meal.findAll({ where: { catererId: req.caterer.id }});
+            return res.status(200).json({
+                status: 'sucsess',
+                message: 'successfully fetched meals',
+                data: meals
+            });
+        } catch(err) {
+            return res.status(500).json({
                 status: 'error',
-                data: 'Input the Parameter Rightly'
+                message: err.message
             });
         }
-        const createdMeal = mealService.addMeal(newMeal);
-        return createdMeal
-            .then(meal => {
-                res.status(201).json({
-                    status: 'success',
-                    data: meal
-                })
-            })
-            .catch(err => console.log(err));
-    },
-    getSingleMeal(req, res) {
-        const id = req.params.id;
-        const foundMeal = mealService.getMeal(id);
-        if(Number.isNaN(Number(id))) {
-            return res.status(400).json({
+        
+    };
+    static async addMeal(req, res){
+        try {
+            const { name, price, quantity, imageUrl } = req.body;
+            const catererId = req.caterer.id;
+            if(!name || !quantity || !imageUrl || !price || !catererId ) {
+                return res.status(400).json({
+                    status: 'error',
+                    data: 'Input the Parameter Rightly'
+                });
+            }
+            const newMeal = await Meal.create({
+                name,
+                price,
+                imageUrl,
+                quantity,
+                catererId 
+            });
+            return res.status(200).json({
+                status: 'success',
+                message: 'Sucessfully added meal',
+                data: { newMeal }
+            });
+        } catch(err) {
+            return res.status(500).json({
                 status: 'error',
-                data: 'Your id is not a number! it must be a number'
-            });
-        } else {
-            return foundMeal
-                .then(meal => {
-                    res.status(200).json({
-                    status: 'success',
-                    data: meal
-                  })
-                })
-                .catch(err => console.log(err));
-        }
-    },
-    deleteSingleMeal(req, res){
-        const id = req.params.id;
-        const deleteMeal = mealService.deleteMeal(id);
-
-        if(Number.isNaN(Number(id))) {
-            return res.status(400).json({
-                message: 'Please make sure you input a Number'
+                message: err.message
             });
         }
-        return deleteMeal
-            .then(meal => {
-                res.status(200).json({
-                    status: 'success',
-                    data: meal
-                });
-            })
-            .catch(err => console.log(err)); 
+        
+    };
+    
+    static async updateSingleMeal(req, res){
+        try {
+            const { id } = req.params;
+            const meal = await Meal.findOne({ where: { id }});
+            if(!meal){
+                throw new Error(`Meal with ${id} does not exist`);
+            }
+            if(meal.catererId !== req.caterer.id){
+                throw new Error('You are not allowed to do that');
+            }
+            const mealUpdate = {
+                name: req.body.name,  
+                imageUrl: req.body.imageUrl,
+                price: req.body.price,
+                quantity: req.body.quantity
+            };
+            const { name, imageUrl, price, quantity } = mealUpdate;
+            await Meal.update({ name, price, imageUrl, quantity }, { where: { id } });
+            res.status(200).json({
+                status: 'success',
+                message: 'successfuly updated meal',
+                data: mealUpdate
+            });
+        } catch(err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            });
+        }
+        
+    };
 
-    },
-    updateSingleMeal(req, res){
-         const newUpdate = req.body;
-         const { id } = req.params;
+    static async deleteSingleMeal(req, res){
+        try {
+            const { id } = req.params;
+            const meal = await Meal.findOne({ where: { id }});
+            if(!meal){
+                throw new Error(`Meal with ${id} does not exist`);
+            }
+            if(meal.catererId !== req.caterer.id){
+                throw new Error('You are not allowed to do that');
+            }
+            await Meal.destroy({
+                where: {
+                    id: meal.id
+                }
+            });
+            return res.status(200).json({
+                status: 'success',
+                message: 'Meal deleted successfully'
+            });
+        } catch(err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            });
+        }
+        
 
-         if(Number.isNaN(Number(id))) {
-             return res.status(400).json({
-                 message: 'Please make sure you input a Number'
-             });
-         }
-         const updateMeal = mealService.updateMeal(id, newUpdate);
-         return updateMeal
-            .then(meal => {
-                res.status(201).json({
-                    status: 'success',
-                    data: meal
-                });
-            })
-            .catch(err => console.log(err));
-    }
+    };
 
 }
 
