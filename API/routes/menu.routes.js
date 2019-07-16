@@ -8,7 +8,7 @@ import AuthController from '../controllers/auth.controller';
 const router = Router();
 
 router.get('/', AuthController.verifyUser, menuController.fetchAllMenu);
-router.post('/', AuthController.verifyAdmin, menuController.createMenu);
+router.post('/', AuthController.verifyAdmin, menuController.addMealToMenu);
 
 
 export default router;

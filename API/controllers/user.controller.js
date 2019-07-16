@@ -6,8 +6,8 @@ import config from '../config';
 class UserController {
     static async registerUser(req, res){
         try{
-            const { firstname, lastname, email, password } = req.body;
-            if(!firstname || !lastname || !email || !password){
+            const { firstname, lastname, email, password, phone } = req.body;
+            if(!firstname || !lastname || !email || !password || !phone){
                 throw new Error('Incorrect parameters');
             }
             const hashedPassword = await bcrypt.hashSync(password, 10);
@@ -15,12 +15,13 @@ class UserController {
             if(emailIni){
                 throw new Error('User with that email already exist');
             }
-            const user = await User.create({ firstname, lastname, email,  password: hashedPassword });
+            const user = await User.create({ firstname, lastname, email,  password: hashedPassword, phone });
             const safeUser = {
                 id: user.id,
                 firstname: user.firstname,
                 lastname: user.lastname,
-                email: user.email
+                email: user.email,
+                phone: user.phone
             };
             const jwtToken = jwt.sign({ user: safeUser }, config.secret, {
                 expiresIn: 86400

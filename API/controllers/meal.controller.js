@@ -21,9 +21,9 @@ class mealController  {
     };
     static async addMeal(req, res){
         try {
-            const { name, price, quantity, imageUrl } = req.body;
+            const { name, price, imageUrl, quantity } = req.body;
             const catererId = req.caterer.id;
-            if(!name || !quantity || !imageUrl || !price || !catererId ) {
+            if(!name || !imageUrl || !price || !catererId || !quantity) {
                 return res.status(400).json({
                     status: 'error',
                     data: 'Input the Parameter Rightly'
