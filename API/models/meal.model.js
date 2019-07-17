@@ -18,7 +18,7 @@ const Meal = db.define('meals', {
     },
     quantity: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        default: null
     },
     price: {
         type: Sequelize.INTEGER,

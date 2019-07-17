@@ -21,9 +21,9 @@ class mealController  {
     };
     static async addMeal(req, res){
         try {
-            const { name, price, imageUrl, quantity } = req.body;
+            const { name, price, imageUrl} = req.body;
             const catererId = req.caterer.id;
-            if(!name || !imageUrl || !price || !catererId || !quantity) {
+            if(!name || !imageUrl || !price || !catererId ) {
                 return res.status(400).json({
                     status: 'error',
                     data: 'Input the Parameter Rightly'
@@ -33,7 +33,6 @@ class mealController  {
                 name,
                 price,
                 imageUrl,
-                quantity,
                 catererId 
             });
             return res.status(200).json({
@@ -63,11 +62,10 @@ class mealController  {
             const mealUpdate = {
                 name: req.body.name,  
                 imageUrl: req.body.imageUrl,
-                price: req.body.price,
-                quantity: req.body.quantity
+                price: req.body.price
             };
-            const { name, imageUrl, price, quantity } = mealUpdate;
-            await Meal.update({ name, price, imageUrl, quantity }, { where: { id } });
+            const { name, imageUrl, price } = mealUpdate;
+            await Meal.update({ name, price, imageUrl}, { where: { id } });
             res.status(200).json({
                 status: 'success',
                 message: 'successfuly updated meal',

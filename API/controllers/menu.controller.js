@@ -29,16 +29,24 @@ class menuController  {
     };
     static async addMealToMenu(req, res){
         try{
-            const { mealId } = req.body;
+            const { mealId, quantity } = req.body;
+            if(!mealId || !quantity ) {
+                return res.status(400).json({
+                    status: 'error',
+                    data: 'Input the Parameter Rightly'
+                });
+            }
             const meal = await Meal.findOne({ where: { id: mealId, catererId: req.caterer.id }});
             if(!meal){
                 throw new Error(`meal with id ${mealId} does not exist for you`);
             }
+            meal.dataValues.quantity = Number(quantity);
             const safeMeal = {
                 id: meal.dataValues.id,
                 name: meal.dataValues.name,
                 price: meal.dataValues.price,
                 imageUrl: meal.dataValues.imageUrl,
+                quantity,
                 catererId: meal.dataValues.catererId
             }
             const today = menuController.todaysDateGenerator();
@@ -50,6 +58,7 @@ class menuController  {
                     meals: JSON.stringify(menuMeals),
                     catererId: req.caterer.id
                 });
+                await Meal.update({ quantity }, { where: { id: mealId}});
                 return res.status(200).json({
                     status: 'success',
                     message: 'successfully added to menu',
@@ -58,16 +67,18 @@ class menuController  {
             } else {
                 menuMeals = JSON.parse(menu[0].dataValues.meals);
                 menuMeals.forEach(menuMeal => {
-                    if(menuMeal.id !== mealId){
+                    if(menuMeal.id !== Number(mealId)){
                         menuMeals.push(safeMeal);
                     } else {
-                        throw new Error('Meal already added to menu');
+                        throw new Error('Meal already added to menu')
                     }
                 });
                 await Menu.update(
                     { meals: JSON.stringify(menuMeals) },
                     { where: {catererId: req.caterer.id, createdAt:today }}
                 )
+                const mealIndex = menuMeals.findIndex(menuMeal => menuMeal.id === Number(mealId));
+                await Meal.update({ quantity: menuMeals[mealIndex].quantity }, { where: { id: mealId } });
                 return res.status(200).json({
                     status: 'success',
                     message: 'Menu updated successfully',

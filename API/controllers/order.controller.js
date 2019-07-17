@@ -1,78 +1,94 @@
-import orderService from '../services/order.service';
+import Order from '../models/order.model';
+import OrderItem from '../models/orderItem.model';
+import Meal from '../models/meal.model';
 
 
 
-const orderController = {
-    fetchAllOrder(req, res){
-        const allOrder = orderService.fetchAllOrder();
-        return allOrder
-            .then(order => {
-                res.status(201).json({
-                    status: 'success',
-                    data: order
-                })
-            })
-            .catch(err => console.log(err));
-    },
-    addOrder(req, res){
-        const newOrder = req.body;
-
-        if(!newOrder.order || !newOrder.total || !newOrder.billing_address || !newOrder.catererId || !newOrder.userId){
-            return res.status(400).json({
+class orderController  {
+    static async addToUserOrder(req, res) {
+        try {
+            const { mealId, quantity } = req.body;
+            const orderIni = await OrderItem.findOne({ where: { mealId, userId: req.user.id }});
+            if(orderIni){
+                return res.status(200).json({
+                    message: 'Order already exists'
+                });
+            }
+            const meal = await Meal.findOne({ where: { id: mealId }});
+            if(quantity > meal.quantity){
+                throw new Error(`we only have ${meal.quantity} of these item in stock`);
+            }
+            const newOrderItem = await OrderItem.create({ mealId, quantity, userId: req.user.id });
+            return req.status(200).json({
+                status: 'success',
+                message: 'Successfully added OrderItem',
+                data: newOrderItem
+            });
+        } catch(err) {
+            return res.status(500).json({
                 status: 'error',
-                data: 'Input the Parameters Rightly'
+                message: err.message
             });
         }
-
-        const createdOrder = orderService.addOrder(newOrder);
-        return createdOrder
-            .then(order => {
-                res.status(201).json({
+        
+    };
+    static async fetchAllOrder(req, res){
+        try {
+            const orders = await Order.findAll({ where: { catererId: req.caterer.id }, include: { model: User, attribute: ['name'] }});
+            if(orders.length === 0){
+                return res.status(200).json({
                     status: 'success',
-                    data: order
-                })
-            })
-            .catch(err => console.log(err));
-    },
-    updateSingleOrder(req, res){
-         const newUpdate = req.body;
-         const { id } = req.params;
-
-         if(Number.isNaN(Number(id))) {
-            return res.status(400).json({
-                message: 'Please make sure you input a Number'
-            });
-        }
-
-         const updateOrder = orderService.updateOrder(id, newUpdate);
-         return updateOrder
-            .then(order => {
-                res.status(200).json({
-                    status: 'success',
-                    data: order
+                    message: 'No order has been made yet'
                 });
-            })
-            .catch(err => console.log(err));
-    },
-    deleteSingleOrder(req, res){
-        const id = req.params.id;
-        const deleteOrder = orderService.deleteOrder(id);
-
-        if(deleteOrder == null) {
-            return res.status(400).json({
-                message: `cannot delete order with id ${id} now`
+            }
+            return res.status(200).json({
+                status: 'success',
+                message: 'Successfully feched orders',
+                data: orders
+            });
+        } catch(err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
             });
         }
-        return deleteOrder
-            .then(order => {
-                res.status(200).json({
-                    status: 'success',
-                    data: order
-                });
-            })
-            .catch(err => console.log(err)); 
-
-    }
+        
+    };
+    static async addOrder(req, res){
+        
+    };
+    static async updateSingleOrder(req, res){
+        try {
+            const { orderId } = req.params;
+            const { quantity } = req.body;
+            const orderItem = await OrderItem.findOne({ where: { id: orderId, userId: req.user.id}, include:[Meal]});
+            if( quantity > orderItem.meal.quantity ){
+                throw new Error(`we only have ${orderItem.meal.quantity} of these item in stock`);
+            }
+            await OrderItem.update({ quantity: quantity },{ where: { id: orderItem.id }});
+            return res.status(200).json({
+                status: 'success',
+                message: 'Updated Order successfully'
+            });
+        } catch(err){
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            });
+        }   
+    };
+    static async deleteSingleOrder(req, res){
+        const { orderId } = req.params;
+        const orderItem = await OrderItem.findOne({ where: { id: orderId, userId: req.user.id}});
+        if(!orderItem){
+            throw new Error(`Order does not exist`);
+        }
+        await OrderItem.destroy({ where: { id: orderItem.id }})
+        return res.status(200).json({
+            status: 'success',
+            message: 'Order removed successfully'
+        });
+    };
 }
 
 export default orderController;
