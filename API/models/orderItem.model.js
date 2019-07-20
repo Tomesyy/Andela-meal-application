@@ -14,7 +14,7 @@ const OrderItem = db.define('orderItem', {
     allowNull: false
   },
   quantity: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       allowNull: false
   },
   userId: {
