@@ -2,11 +2,6 @@ import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
-// import Meal from './models/meal.model';
-// import User from './models/users.model';
-// import Caterer from './models/caterers.model';
-// import Menu from './models/menu.model';
-// import Order from './models/order.model';
 import UserRoutes from './routes/user.routes';
 import CatererRoutes from './routes/caterer.routes';
 
@@ -16,6 +11,7 @@ const PORT = 3000;
 const VERSION_API = '/api/v1';
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 import db from './utils/database';
 

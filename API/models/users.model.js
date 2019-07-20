@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import db from '../utils/database';
 
-import Order from './order.model';
+import OrderItem from './orderItem.model';
 
 const User = db.define('users', {
     id: {
@@ -18,7 +18,12 @@ const User = db.define('users', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    username: {
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+    },
+    phone: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -26,14 +31,10 @@ const User = db.define('users', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    isAdmin: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-    },
     createdAt: Sequelize.DATEONLY,
     updatedAt: Sequelize.DATEONLY
 });
 
-User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
+User.hasMany(OrderItem, { constraints: true, onDelete: 'CASCADE' });
 
 export default User
